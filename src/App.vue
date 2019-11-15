@@ -1,17 +1,22 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Board/>
+    <Keyboard/>
+    <CtrlPanel id="ctrlpanel" :width="500" :height="100"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Board from './components/Board.vue'
+import CtrlPanel from './components/CtrlPanel.vue'
+import Keyboard from './components/Keyboard.vue'
 
 export default {
-  name: 'app',
+  name: 'Beige',
   components: {
-    HelloWorld
+    Board,
+    Keyboard,
+    CtrlPanel
   }
 }
 </script>
