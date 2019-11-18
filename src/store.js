@@ -10,16 +10,22 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
+        test: [],
         childObjs: {},
         sourceInput: Object,
         finalGain: Object,
         ctx: Object,
         audioCtx: Object,
-        redraw: 0
+        redraw: 0,
+        reevalute: 1
     },
     getters: {
         childObjs: state => { return state.childObjs }
         , redraw: state => { return state.redraw }
+        , lengthOfChild: state => {
+            if (state.reevalute)
+                return Object.keys(state.childObjs).length
+        }
     },
     mutations: {
         setCtx(state, ctx) {
@@ -29,10 +35,8 @@ export const store = new Vuex.Store({
             state.audioCtx = audioCtx
         },
         addOsc(state, name) {
-            // Osc.prototype = new uibase(state.ctx, name)
-            // let A = new Osc(name, state.ctx, state.audioCtx)
-
             state.childObjs[name] = new Osc(name, state.ctx, state.audioCtx)
+            state.reevalute++
         },
         addBus(state, name) {
             state.childObjs[name] = new Bus(name, state.ctx)
@@ -68,7 +72,6 @@ export const store = new Vuex.Store({
         },
         redraw(state) {
             state.redraw++
-            console.log(state.redraw)
         }
     },
 });

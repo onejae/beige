@@ -20,11 +20,22 @@ export default {
   },
   methods: {
     add() {
-      this.$store.commit("addOsc");
+      let newObjName = this.$store.getters.lengthOfChild + 1
+      console.log(newObjName)
+      this.$store.commit("addOsc", newObjName);
+      this.$store.commit("addOsc", newObjName);
+      this.$store.commit("connectToOutput", newObjName);
+      this.$store.commit("changeOscType", {
+        name: newObjName,
+        type: "triangle"
+      });
+      this.$store.commit("setSource", newObjName);
+      this.$store.commit("move", {
+        name: newObjName,
+        position: { x: 100, y: 100 }
+      });
     }
   },
-  mounted() {
-
-  }
+  mounted() {}
 };
 </script>

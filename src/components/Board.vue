@@ -37,17 +37,12 @@ export default {
     this.$store.commit("move", {name: "sourceInput", position:{x:30, y:200}})
     this.$store.commit("move", {name: "finalGain", position:{x:450, y:200}})
 
-    this.$store.commit("addOsc", "testosc");
-    this.$store.commit("connectToOutput", "testosc");
-    this.$store.commit("changeOscType", {name: "testosc", type: "triangle"});
-    this.$store.commit("setSource", "testosc");
-    this.$store.commit("move", {name: "testosc", position:{x:100, y:100}})
-
-    this.$store.commit("addOsc", "testosc2");
-    this.$store.commit("connectToOutput", "testosc2");
-    this.$store.commit("changeOscType", {name: "testosc2", type: "sine"});
-    this.$store.commit("setSource", "testosc2");
-    this.$store.commit("move", {name: "testosc2", position:{x:100, y:200}})
+    let newObjName = this.$store.getters.lengthOfChild;
+    this.$store.commit("addOsc", newObjName);
+    this.$store.commit("connectToOutput", newObjName);
+    this.$store.commit("changeOscType", {name: newObjName, type: "triangle"});
+    this.$store.commit("setSource", newObjName);
+    this.$store.commit("move", {name: newObjName, position:{x:100, y:100}})
 
     this.draw();
   },
