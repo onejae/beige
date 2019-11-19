@@ -1,9 +1,7 @@
 // import Connection from './Connection'
 import ModuleBase from './ModuleBase'
-// import UIBase from '../ui/UIBase'
 
 var Osc = function (name, ctx, audioCtx) {
-    // UIBase.call(this, name, ctx)
     ModuleBase.call(this, name, ctx)
     this.rect.width = 50
     this.rect.height = 50

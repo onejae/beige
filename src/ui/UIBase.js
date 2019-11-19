@@ -2,12 +2,22 @@ import { Rect, checkRect, Point } from '../libs/coordinate'
 
 // base component of all ui 
 // ctx : canvas context
-// name : idientifier, must be unique
-export default function (name, ctx) {
+// id : idientifier, must be unique
+export default function (ctx, id, type) {
     this.rect = new Rect(0, 0, 0, 0)
     this.ctx = ctx
-    this.name = name
-
+    if (type) {
+        this.type = type
+    }
+    else {
+        this.type = "notype"
+    }
+    if (id) {
+        this.id = id
+    }
+    else {
+        this.id = this.type + '_' + new Date().getTime()
+    }
     this.move = function (x, y) {
         this.rect.x = x
         this.rect.y = y

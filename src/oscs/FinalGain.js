@@ -1,7 +1,7 @@
 import UIBase from '../ui/UIBase'
 
 var FinalGain = function (ctx, audioCtx) {
-    UIBase.call(this, 'finalGain', ctx)
+    UIBase.call(this, ctx, 'finalGain')
     this.rect.width = 20
     this.rect.height = 10
     this.audioCtx = audioCtx

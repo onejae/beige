@@ -20,8 +20,8 @@ export default {
   },
   methods: {
     add() {
-      let newObjName = this.$store.getters.lengthOfChild + 1
-      console.log(newObjName)
+      let newObjName = this.$store.getters.lengthOfChild + 1;
+      console.log(newObjName);
       this.$store.commit("addOsc", newObjName);
       this.$store.commit("addOsc", newObjName);
       this.$store.commit("connectToOutput", newObjName);
@@ -30,10 +30,13 @@ export default {
         type: "triangle"
       });
       this.$store.commit("setSource", newObjName);
+      let x = Math.random() * 1000 % 50;
+      let pm = Math.random() < 0.5 ? -1 : 1 
       this.$store.commit("move", {
         name: newObjName,
-        position: { x: 100, y: 100 }
+        position: { x: 100 + (x * pm), y: 100 + (x * pm) }
       });
+      this.$store.commit("redraw");
     }
   },
   mounted() {}

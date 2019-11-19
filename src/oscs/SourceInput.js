@@ -1,7 +1,7 @@
 import UIBase from '../ui/UIBase'
 
 var SourceInput = function(ctx, audioCtx) {
-    UIBase.call(this, 'sourceInput', ctx)
+    UIBase.call(this, ctx, 'sourceInput')
 
     this.rect.width = 20
     this.rect.height = 10
