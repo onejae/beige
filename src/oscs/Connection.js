@@ -10,7 +10,7 @@ export default function(ctx, parent) {
         this.ctx.strokeStyle = "white"
 
         for (let key in this.targetObjs) {
-            let destPosition = this.targetObjs[key].rect
+            let destPosition = this.targetObjs[key].rect.getCenter()
 
             let c = parent.getCenter()
             this.ctx.moveTo(c.x, c.y)

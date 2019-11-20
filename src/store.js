@@ -53,7 +53,7 @@ export const store = new Vuex.Store({
         },
         setSource(state, target) {
             // assume that target is a osc
-            state.sourceInput.connect(state.childObjs[target].o.frequency)
+            state.sourceInput.connect(state.childObjs[target])
         },
         changeOscType(state, payload) {
             state.childObjs[payload.name].o.type = payload.type

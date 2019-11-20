@@ -8,8 +8,8 @@ var moduleBase = function (id, ctx) {
         this.connection.connect(destination)
     }
 
-    this.draw = function(module) {
-        module.connection.draw()
+    this.draw = function() {
+        this.connection.draw()
     }
 }
 

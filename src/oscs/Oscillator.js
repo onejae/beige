@@ -1,4 +1,3 @@
-// import Connection from './Connection'
 import ModuleBase from './ModuleBase'
 
 var Osc = function (name, ctx, audioCtx) {
@@ -6,20 +5,16 @@ var Osc = function (name, ctx, audioCtx) {
     this.rect.width = 50
     this.rect.height = 50
 
-    // connection
-    // this.connection = new Connection(ctx, this)
-
     // audio
     this.o = audioCtx.createOscillator()
     this.o.type = "sine"
     this.o.frequency.value = 0
     this.o.start()
 
+    // user interface
+
     this.draw = function () {
-        // this.connection.draw()
-        // ModuleBase.prototype.draw.call(this)
-        // this.drawModule()
-        Osc.prototype.draw(this)
+        Osc.prototype.draw.call(this)
         ctx.fillStyle = "grey"
         ctx.fillRect(this.rect.x, this.rect.y, this.rect.width, this.rect.height)
 
@@ -28,10 +23,6 @@ var Osc = function (name, ctx, audioCtx) {
         ctx.fillStyle = "white"
         ctx.fillText("type : " + this.o.type, this.rect.x, this.rect.y)
     }
-
-    // this.connect = function (destination) {
-        // this.connection.connect(destination)
-    // }
 }
 
 Osc.prototype = new ModuleBase()

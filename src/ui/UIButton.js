@@ -1,7 +1,7 @@
 import UIBase from './UIBase'
 
 var UIButton = function (ctx, id) {
-    UIBase.call(this, ctx, id)
+    UIBase.call(this, ctx, id, "button")
 
     this.state = 'normal'
 
@@ -13,5 +13,5 @@ var UIButton = function (ctx, id) {
 
 }
 
-UIButton.prototype = UIBase()
+UIButton.prototype = new UIBase()
 UIButton.prototype.constructor = UIButton 

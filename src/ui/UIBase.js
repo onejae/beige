@@ -6,6 +6,9 @@ import { Rect, checkRect, Point } from '../libs/coordinate'
 export default function (ctx, id, type) {
     this.rect = new Rect(0, 0, 0, 0)
     this.ctx = ctx
+    this.parent = null
+    this.childs = []
+
     if (type) {
         this.type = type
     }
@@ -18,9 +21,17 @@ export default function (ctx, id, type) {
     else {
         this.id = this.type + '_' + new Date().getTime()
     }
+
     this.move = function (x, y) {
-        this.rect.x = x
-        this.rect.y = y
+        // position sets based on their parent 
+        let basePos = new Point(0, 0)
+        if (this.parent) {
+            basePos.x = this.parent.rect.x
+            basePos.y = this.parent.rect.y
+        }
+
+        this.rect.x = basePos.x + x
+        this.rect.y = basePos.y + y
     }
 
     this.hittest = function (x, y) {
@@ -28,6 +39,11 @@ export default function (ctx, id, type) {
     }
 
     this.getCenter = function () {
-        return new Point(this.rect.x + (this.rect.width * 0.5), this.rect.y + (this.rect.height * 0.5))
+        return this.rect.getCenter()
+    }
+
+    this.addChild = function (obj) {
+        obj.parent = this
+        this.childs.push(obj)
     }
 }
