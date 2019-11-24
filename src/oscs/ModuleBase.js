@@ -2,14 +2,22 @@ import Connection from './Connection'
 import UIBase from '../ui/UIBase'
 var moduleBase = function (id, ctx) {
     UIBase.call(this, ctx, id)
-    this.connection = new Connection(ctx, this)
+    this.connections = []
 
     this.connect = function (destination) {
-        this.connection.connect(destination)
+        let connection = new Connection(this.ctx, this)
+        connection.connect(destination)
+        this.connections.push(connection)
+    }
+
+    this.disconnect = function () {
+
     }
 
     this.draw = function() {
-        this.connection.draw()
+        for (let key in this.connections) {
+            this.connections[key].draw()
+        }
     }
 }
 
